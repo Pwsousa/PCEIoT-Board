@@ -57,6 +57,7 @@ target_include_directories(main PRIVATE
 target_link_libraries(main 
     hardware_adc
     hardware_gpio
+    hardware_i2c
     pico_stdio_usb
         
         )
