@@ -7,13 +7,13 @@
 /**
  * @brief Estrutura que representa o sensor OPT4001.
  * 
- * Contém o descritor do I2C (adaptar conforme ambiente),
+ * Contém o descritor do I2C
  * endereço do dispositivo e offset para calibração.
  */
 typedef struct {
-    i2c_inst_t *i2c;          /**< Descritor da interface I2C (se Linux) ou adaptar para Pico SDK */
-    uint8_t address;     /**< Endereço I2C do sensor */
-    float offset;        /**< Offset para calibração do valor de lux */
+    i2c_inst_t *i2c;         
+    uint8_t address;     
+    float offset;        
 } OPT4001;
 
 /**
@@ -22,7 +22,7 @@ typedef struct {
  * Para Linux, abre o dispositivo I2C; para Pico SDK, adaptar inicialização.
  * 
  * @param sensor Ponteiro para a estrutura OPT4001 a inicializar.
- * @param i2c_path Caminho do dispositivo I2C (ex: "/dev/i2c-1") para Linux.
+ * @param i2c_path Caminho do dispositivo I2C.
  *                 No Pico SDK, adaptar para interface i2c_inst_t*.
  * @param address Endereço I2C do sensor.
  * @return int 0 em sucesso, negativo em erro.
