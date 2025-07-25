@@ -35,18 +35,25 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(OPT4001 OPT4001.c )
+add_executable(OPT4001
+    main.c
+    opt4001.c
+
+)
+
 
 pico_set_program_name(OPT4001 "OPT4001")
 pico_set_program_version(OPT4001 "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(OPT4001 0)
+pico_enable_stdio_uart(OPT4001 1)
 pico_enable_stdio_usb(OPT4001 0)
 
 # Add the standard library to the build
 target_link_libraries(OPT4001
-        pico_stdlib)
+        
+        hardware_i2c 
+        pico_stdlib )
 
 # Add the standard include files to the build
 target_include_directories(OPT4001 PRIVATE
@@ -55,7 +62,6 @@ target_include_directories(OPT4001 PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(OPT4001 
-        
         )
 
 pico_add_extra_outputs(OPT4001)
