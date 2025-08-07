@@ -1,0 +1,23 @@
+name: C Unit Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+
+    - name: Instalar dependências
+      run: sudo apt-get update && sudo apt-get install -y cmake gcc
+
+    - name: Build e testes
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build .
+        ctest --output-on-failure
